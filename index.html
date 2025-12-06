@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ProntoWorks</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>ProntoWorks</h1>
+  <p>Affordable Academic Services for Students</p>
+  <div id="profileIcon" title="Profile" style="display:none; cursor:pointer; font-size:1.8em; position:absolute; top:20px; right:20px; background:#00f2ff; color:#0b1020; width:50px; height:50px; line-height:50px; border-radius:50%; text-align:center;">👤</div>
+</header>
+
+<!-- =================== AUTH / LOGIN SECTION =================== -->
+<section id="authSection" class="card">
+  <h2>Create Account / Sign In</h2>
+  <input id="regName" placeholder="Full Name">
+  <input id="regEmail" placeholder="Email">
+  <input id="regPhone" placeholder="Phone">
+  <input id="regPass" type="password" placeholder="Password">
+  <div class="auth-buttons">
+    <button id="btnRegister">Create Account</button>
+    <button id="btnSignin">Sign In</button>
+    <button id="btnForgot">Forgot Password?</button>
+  </div>
+</section>
+
+<!-- =================== PROFILE PANEL =================== -->
+<div id="profilePanel" class="card profile-card" style="display:none; position:absolute; top:80px; right:20px; width:260px; z-index:100;">
+  <h3 id="profileName"></h3>
+  <p id="profileEmail"></p>
+  <h4>Recent Activities</h4>
+  <div class="activities-box" id="activitiesBox"></div>
+  <button id="btnPanelSignout">Sign Out</button>
+</div>
+
+<!-- =================== MAIN CONTENT =================== -->
+<div id="mainContent" style="display:none;">
+  <!-- SERVICES -->
+  <section class="card services-card">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Handwritten Assignment - ₹300 to ₹500 (Depends on length & negotiable)</li>
+      <li>PPT Presentation - ₹300 (Non-negotiable)</li>
+      <li>Laptop Assignment (PDF only, no print) - ₹200 (Negotiable)</li>
+      <li>Laptop Assignment (Printout with spiral bind) - ₹250–₹300 (Depends on pages & non-negotiable)</li>
+    </ul>
+  </section>
+
+  <!-- ESTIMATOR -->
+  <section class="card">
+    <h2>Estimate Price</h2>
+    <select id="serviceType">
+      <option>Handwritten Assignment</option>
+      <option>PPT Presentation</option>
+      <option>Laptop Assignment (PDF)</option>
+      <option>Laptop Assignment (Print)</option>
+    </select>
+    <input id="pages" type="number" placeholder="Approximate Pages (optional)">
+    <input id="days" type="number" placeholder="Required Days">
+    <button id="calcBtn">Calculate</button>
+    <p id="result"></p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card contact-card">
+    <h2>Contact</h2>
+    <p>📧 pyushx06@gmail.com</p>
+    <p>📧 sunrakuufinite@gmail.com</p>
+    <p>📧 soundwave0@gmail.com</p>
+    <p>📞 9263775454</p>
+    <p>📞 7016024581</p>
+    <p>📞 9973976175</p>
+  </section>
+</div>
+
+<!-- =================== LEGAL POPUP =================== -->
+<div id="legalPopup" class="popup" style="display:none;">
+  <div class="popup-box" id="legal">
+    <button id="closePopup" class="close-btn">✖</button>
+    <h3>Legal Agreement</h3>
+    <p>
+      By using ProntoWorks, you agree that:
+      - Your data (name, email, phone) will be stored.
+      - Payment once done is non-refundable.
+      - Project ownership transfers after full payment.
+      - Misuse, fraud or legal issues will be strictly handled.
+      - This consent is recorded with timestamp & user identity.
+    </p>
+
+    <label>
+      <input type="checkbox" id="agreeCheck"> I Agree to the Legal Terms
+    </label>
+
+    <br><br>
+    <button id="acceptLegal">Accept & Download PDF</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
